@@ -8,3 +8,83 @@ body {
     width: 100%;
     min-height: 100vh;
 }
+
+#ossos-de-napier {
+    display: table;
+    width: 100%;
+    max-width: 800px;
+    border: 2px solid gray;
+    border-collapse: collapse;
+}
+
+
+
+#cabecalho-ferramenta {
+    display : table-header-group;
+}
+
+#corpo-ferramenta {
+    display: table-row-group;
+}
+
+.linha {
+    display : table-row;
+}
+
+.celula {
+    display :  table-cell;
+    padding: 20px;
+    text-align: center;
+    border: 2px solid gray;
+    border-collapse: collapse;
+    position: relative;
+    overflow: hidden;
+}
+
+.cruzada::after { 
+  content: '';
+  position: absolute;
+    padding-bottom: 125%;
+  left: 25%;
+  width: 112%;
+  background-color: #f37638;
+  -webkit-transition: all 1s;
+  -moz-transition: all 1s;
+  transition: all 1s;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  transform: rotate(54deg);
+  top: 15px;
+} 
+
+.cruzada::before { 
+    content: '';
+    position: absolute;
+    padding-bottom: 135%;
+    left: -35%;
+    width: 111%;
+    background-color: red;
+    -webkit-transition: all 1s;
+    -moz-transition: all 1s;
+    transition: all 1s;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    transform: rotate(53deg);
+    top: -62px;
+} 
+  
+
+
+.algarismo-superior {
+    position: absolute;
+    z-index: 99;
+    left: 20%;
+    top: 10px;
+}
+
+.algarismo-inferior {
+    position: absolute;
+    z-index: 99;
+    right: 20%;
+    bottom: 10px;
+}
