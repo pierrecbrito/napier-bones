@@ -166,10 +166,35 @@ body {
     position: absolute;
     right: 100px;
     top: 100px;;
+    display: flex;
+    flex-direction: column;
 }
 
-#quadro-conta div {
-    display: block;
-    min-width: 200px;
-    text-align: right;
+
+.operando {
+    display: flex;
+    margin-top: 10px;
 }
+
+#quadro-conta .quadrado {
+    border-radius: 10px;
+    background-color: darkgrey;
+    padding: 1em 1.4em;
+    width: fit-content;
+    margin-right: 7px;
+    flex-wrap: wrap;
+}
+
+.quebra-linha {
+    width: 100%;
+}
+
+.linha-resultado {
+    width: 100%;
+    border-top: 2px solid gray;
+    height: 15px;
+    position: relative;
+    margin-top: 10px;
+}
+
+
