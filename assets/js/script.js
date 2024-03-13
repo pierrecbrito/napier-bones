@@ -31,6 +31,16 @@ const esconderColuna = (coluna) => {
     console.log(quantidadeSubidos, document.getElementById('ossos-de-napier').style.width)
 }
 
+const esconderLinha = (linha) => {
+    let coluna = 0
+    while(coluna <= 9) {
+        matriz[linha][coluna].classList.add('arrastado')
+        coluna++
+    }
+   
+}
+
+
 const esconderColunasNaoSelecionadas = () => {
     let linha = 0
 
@@ -40,6 +50,18 @@ const esconderColunasNaoSelecionadas = () => {
             esconderColuna(colunaDaVez)
         }
         colunaDaVez++;
+    }
+  
+}
+
+const esconderLinhasNaoSelecionadas = (algarismos) => {
+    let linhaDaVez = 1
+
+    while(linhaDaVez < 9) {
+        if(!algarismos.includes(`${linhaDaVez+1}`)) {
+            esconderLinha(linhaDaVez)
+        }
+        linhaDaVez++;
     }
   
 }
@@ -63,6 +85,7 @@ const multiplicar = (multiplicacao) => {
     let algarismos1 = operando[0].split("")
     let algarismos2 = operando[1].split("")
     console.log('algarismos', algarismos1)
+    porAsColunasEmSequencia(algarismos1)
 
     for (let index = 0; index < algarismos1.length; index++) {
        
@@ -78,6 +101,10 @@ const multiplicar = (multiplicacao) => {
     }
 
     esconderColunasNaoSelecionadas()
+    setTimeout(function() {
+        esconderLinhasNaoSelecionadas(algarismos2)
+    }, 2000)
+   
 
     //Lógica da programação
     //Última
@@ -90,15 +117,15 @@ const multiplicar = (multiplicacao) => {
             setTimeout(function() { 
                 matriz[algarismos2[algarismos2.length - 1] - 1][algarismos1[index-1]].classList.add('destacar-algarismo-inferior');
                 console.log(parseInt(matriz[algarismos2[algarismos2.length - 1] - 1][algarismos1[index-1]].getElementsByClassName('algarismo-inferior')[0].textContent))
-            }, 1000)
+            }, 3000)
         } else if(index == 0) {//É o último elemento da resposta de trás para frente
             setTimeout(function() { 
                 matriz[algarismos2[algarismos2.length - 1] - 1][algarismos1[index]].classList.add('destacar-algarismo-superior');
                 console.log(parseInt(matriz[algarismos2[algarismos2.length - 1] - 1][algarismos1[index]].getElementsByClassName('algarismo-superior')[0].textContent))
-            }, 2000*delay)
+            }, 3000*delay)
         } else {
-            setTimeout(function() {    matriz[algarismos2[algarismos2.length - 1] - 1][algarismos1[index]].classList.add('destacar-algarismo-superior'); }, 2000 * delay)
-            setTimeout(function() { console.log(parseInt(matriz[algarismos2[algarismos2.length - 1] - 1][algarismos1[index]].getElementsByClassName('algarismo-superior')[0].textContent) + parseInt(matriz[algarismos2[algarismos2.length - 1] - 1][algarismos1[index-1]].getElementsByClassName('algarismo-inferior')[0].textContent));   matriz[algarismos2[algarismos2.length - 1] - 1][algarismos1[index-1]].classList.add('destacar-algarismo-inferior');}, 2000 * delay)        
+            setTimeout(function() {    matriz[algarismos2[algarismos2.length - 1] - 1][algarismos1[index]].classList.add('destacar-algarismo-superior'); }, 3000 * delay)
+            setTimeout(function() { console.log(parseInt(matriz[algarismos2[algarismos2.length - 1] - 1][algarismos1[index]].getElementsByClassName('algarismo-superior')[0].textContent) + parseInt(matriz[algarismos2[algarismos2.length - 1] - 1][algarismos1[index-1]].getElementsByClassName('algarismo-inferior')[0].textContent));   matriz[algarismos2[algarismos2.length - 1] - 1][algarismos1[index-1]].classList.add('destacar-algarismo-inferior');}, 3000 * delay)        
         }
         delay++;
     }
