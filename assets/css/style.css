@@ -46,6 +46,9 @@ body {
     border-collapse: collapse;
     position: relative;
     overflow: hidden;
+    transition: 1s;
+    max-width: 38.40px !important;
+    max-height: 21.60px !important;
 }
 
 /*.cruzada:hover::after { 
@@ -93,4 +96,80 @@ body {
     z-index: 99;
     right: 20%;
     bottom: 10px;
+}
+
+.celula.selecionado {
+    background-color: #29AB87;
+} 
+
+.subido {
+    position: relative;
+    animation: subindo 1.5s ease-in-out;
+    top: -1000px;
+    display: none;
+}
+
+@keyframes subindo {
+    from {
+      top: 0;
+      display: table-cell;
+    }
+  
+    to {
+      top: -1000px;
+      display: none;
+    }
+}
+
+.descido {
+    position: relative;
+    animation: descendo 1.5s ease-in-out;
+    top: 0;
+    display: table-cell;
+}
+
+@keyframes descendo {
+    from {
+      top: -1000px;
+      display: none;
+    }
+  
+    to {
+      top: 0;
+      display: table-cell;
+    }
+  }
+
+.destacar-algarismo-inferior::after {
+    animation: destaque 2s ease-in-out;
+}
+
+.destacar-algarismo-superior::before {
+    animation: destaque 2s ease-in-out;
+}
+
+.destacar-algarismo-superior .algarismo-superior,  .destacar-algarismo-inferior .algarismo-inferior {
+    color: #000000;
+}
+
+@keyframes destaque {
+    from {
+      background-color: #FFFFFF;
+    }
+  
+    to {
+      background-color: #29AB87;
+    }
+  }
+
+#quadro-conta {
+    position: absolute;
+    right: 100px;
+    top: 100px;;
+}
+
+#quadro-conta div {
+    display: block;
+    min-width: 200px;
+    text-align: right;
 }
