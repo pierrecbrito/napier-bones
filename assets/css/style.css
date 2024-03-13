@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
 body {
     margin: 0;
     padding: 0;
-    font-family: sans-serif;
+    font-family: "Open Sans", sans-serif  !important;
 }
 
 #container-principal {
@@ -18,9 +20,14 @@ body {
 }
 
 
-
 #cabecalho-ferramenta {
     display : table-header-group;
+}
+
+.celula:not(.cruzada) {
+    background-color: #00008B;
+    color: #FFFFFF;
+    font-weight: 700;
 }
 
 #corpo-ferramenta {
@@ -46,19 +53,16 @@ body {
 }*/
 
 .cruzada::after { 
-  content: '';
-  position: absolute;
-    padding-bottom: 125%;
-  left: 25%;
-  width: 112%;
-  background-color: #f37638;
-  -webkit-transition: all 1s;
-  -moz-transition: all 1s;
-  transition: all 1s;
-  -webkit-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  transform: rotate(54deg);
-  top: 15px;
+    content: '';
+    position: absolute;
+    padding-bottom: 133%;
+    left: 25%;
+    width: 112%;
+    transition: all 1s;
+    transform: rotate(52deg);
+    top: 14px;
+    border-left: 2px solid gray;
+    background-color: azure;
 } 
 
 .cruzada::before { 
@@ -67,14 +71,13 @@ body {
     padding-bottom: 135%;
     left: -35%;
     width: 111%;
-    background-color: red;
     -webkit-transition: all 1s;
     -moz-transition: all 1s;
     transition: all 1s;
     -webkit-transform: rotate(45deg);
     -moz-transform: rotate(45deg);
-    transform: rotate(53deg);
-    top: -62px;
+    transform: rotate(52deg);
+    top: -60px;
 } 
   
 
@@ -82,7 +85,7 @@ body {
     position: absolute;
     z-index: 99;
     left: 20%;
-    top: 10px;
+    top: 7px;
 }
 
 .algarismo-inferior {
