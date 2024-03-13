@@ -1,1 +1,1 @@
-## Static website design based on Napier's bones.
+## Site estático baseado nos osso de Napier
