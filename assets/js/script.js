@@ -111,21 +111,15 @@ const multiplicar = (multiplicacao) => {
 
     //Lógica da programação
     //Última
-    let delay = 1;
-    let indexSoma = 0
+    let delay = 1
+    let indexSoma = 1
 
 
         //É o primeiro elemento da resposta de trás para frente
         setTimeout(function() { 
             matriz[algarismos2[algarismos2.length  - 1] - 1][algarismos1[algarismos1.length-1]].classList.add('destacar-algarismo-inferior');
             //console.log(parseInt(matriz[algarismos2[algarismos2.length - 1] - 1][algarismos1[index-1]].getElementsByClassName('algarismo-inferior')[0].textContent))
-        }, 100)
-        //É o último elemento da resposta de trás para frente
-        setTimeout(function() { 
-            console.log(matriz[algarismos2[0] - 1][algarismos1[0]])
-            matriz[algarismos2[0] - 1][algarismos1[0]].classList.add('destacar-algarismo-superior');
-            //console.log(parseInt(matriz[algarismos2[algarismos2.length - 1] - 1][algarismos1[index]].getElementsByClassName('algarismo-superior')[0].textContent))
-        }, 1000*++delay)
+        }, 3000)
 
         let diagonaisASeremDestacadas = algarismos1.length + algarismos2.length;
         let diagonaisDaDireita = algarismos1.length;
@@ -134,26 +128,25 @@ const multiplicar = (multiplicacao) => {
         let quantidadeDeCelularesMenores = 0;
         
         for (let index2 = diagonaisDaDireita - 1; index2 > 0; index2--) { //Destacando diagonais da direita
-            setTimeout(function() {   matriz[algarismos2[algarismos2.length - 1] - 1][algarismos1[index2-1]].classList.add('destacar-algarismo-inferior');}, 1000 * delay) 
-            setTimeout(function() {    matriz[algarismos2[algarismos2.length - 1] - 1][algarismos1[index2]].classList.add('destacar-algarismo-superior'); }, 1000 * delay)
+            setTimeout(function() {   matriz[algarismos2[algarismos2.length - 1] - 1][algarismos1[index2-1]].classList.add('destacar-algarismo-inferior');}, 3000 * ++delay) 
+            setTimeout(function() {    matriz[algarismos2[algarismos2.length - 1] - 1][algarismos1[index2]].classList.add('destacar-algarismo-superior'); }, 3000 * delay)
 
             let linhaIndex = 2;
             let colunaIndex = 0;
             for (let index3 = 0; index3 < (quantidadeDeCelularesMenores * 2 + 1); index3++) {//Destaca o restante da diagonal
                 if(index3 % 2 == 0 ) {
-                    setTimeout(function() {   matriz[algarismos2[algarismos2.length - linhaIndex++] - 1][algarismos1[index2+colunaIndex++]].classList.add('destacar-algarismo-inferior'); }, 1000 * delay)
+                    setTimeout(function() {   matriz[algarismos2[algarismos2.length - linhaIndex++] - 1][algarismos1[index2+colunaIndex++]].classList.add('destacar-algarismo-inferior'); }, 3000 * delay)
                 } else {
-                    setTimeout(function() {   matriz[algarismos2[algarismos2.length - linhaIndex + 1] - 1][algarismos1[index2+colunaIndex]].classList.add('destacar-algarismo-superior'); }, 1000 * delay)
+                    setTimeout(function() {   matriz[algarismos2[algarismos2.length - linhaIndex + 1] - 1][algarismos1[index2+colunaIndex]].classList.add('destacar-algarismo-superior'); }, 3000 * delay)
                 }
                     
             }
-
-            delay++;
             ++quantidadeDeCelularesMenores;
         }
 
         quantidadeDeCelularesMenores = algarismos2.length - 1
-        setTimeout(function() {   matriz[algarismos2[algarismos2.length - 1] - 1][algarismos1[0]].classList.add('destacar-algarismo-superior');}, 1000 * delay) 
+        //setTimeout(function() {   matriz[algarismos2[algarismos2.length - 1] - 1][algarismos1[0]].classList.add('destacar-algarismo-superior');}, 3000 * ++delay) 
+        ++delay;
 
         for (let index2 = diagonaisDaEsquerda; index2 > 0; index2--) { //Destacando diagonais da esquerda
             //setTimeout(function() {   matriz[algarismos2[algarismos2.length - 1] - 2][algarismos1[0]].classList.add('destacar-algarismo-superior');}, 3000 * delay) 
@@ -161,18 +154,23 @@ const multiplicar = (multiplicacao) => {
             let colunaIndex = 0;
             for (let index3 = 0; index3 < ((quantidadeDeCelularesMenores * 2 + 1) - 1); index3++) {//Destaca o restante da diagonal
                 if(index3 % 2 == 0 ) {
-                    setTimeout(function() { console.log("Olha aqui", matriz[algarismos2[index2 - linhaIndex] - 1][algarismos1[colunaIndex] ]);   matriz[algarismos2[index2 - linhaIndex] - 1][algarismos1[colunaIndex] ].classList.add('destacar-algarismo-inferior'); }, 1000 * delay)
+                    setTimeout(function() { console.log("Olha aqui", matriz[algarismos2[index2 - linhaIndex] - 1][algarismos1[colunaIndex] ]);   matriz[algarismos2[index2 - linhaIndex] - 1][algarismos1[colunaIndex] ].classList.add('destacar-algarismo-inferior'); }, 3000 * delay)
                 } else {
-                    setTimeout(function() {   matriz[algarismos2[index2 - linhaIndex++ + 1] - 1][algarismos1[colunaIndex++]].classList.add('destacar-algarismo-superior'); }, 1000 * delay)
+                    setTimeout(function() {   matriz[algarismos2[index2 - linhaIndex++ + 1] - 1][algarismos1[colunaIndex++]].classList.add('destacar-algarismo-superior'); }, 3000 * delay)
                     
                 }
             }
 
-            delay++;
+            ++delay;
             --quantidadeDeCelularesMenores;
         }
         
-       
+        //É o último elemento da resposta de trás para frente
+        setTimeout(function() { 
+            matriz[algarismos2[0] - 1][algarismos1[0]].classList.add('destacar-algarismo-superior');
+
+        }, 3000*delay)
+
     
 }
 
