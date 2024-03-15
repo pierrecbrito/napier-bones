@@ -87,6 +87,7 @@ const multiplicar = (multiplicacao) => {
     console.log('algarismos', algarismos1)
     porAsColunasEmSequencia(algarismos1)
 
+    //Destaca colunas no cabeçalho
     for (let index = 0; index < algarismos1.length; index++) {
        
         let algarismoADestacar = parseInt(algarismos1[index])
@@ -95,11 +96,13 @@ const multiplicar = (multiplicacao) => {
         
     }
 
+    //Destaca linhas na lateral
     for (let index = 0; index < algarismos2.length; index++) {
         let algarismoADestacar = parseInt(algarismos2[index])
         matriz[algarismoADestacar == 0 ? 0 : algarismoADestacar - 1][0].classList.add('selecionado')
     }
 
+    //Animações de esconder
     esconderColunasNaoSelecionadas()
     setTimeout(function() {
         esconderLinhasNaoSelecionadas(algarismos2)
@@ -112,23 +115,76 @@ const multiplicar = (multiplicacao) => {
     let indexSoma = 0
 
 
-    for (let index = algarismos1.length; index >= 0; index--) {
-        if(index == algarismos1.length ) {//É o primeiro elemento da resposta de trás para frente
-            setTimeout(function() { 
-                matriz[algarismos2[algarismos2.length - 1] - 1][algarismos1[index-1]].classList.add('destacar-algarismo-inferior');
-                console.log(parseInt(matriz[algarismos2[algarismos2.length - 1] - 1][algarismos1[index-1]].getElementsByClassName('algarismo-inferior')[0].textContent))
-            }, 3000)
-        } else if(index == 0) {//É o último elemento da resposta de trás para frente
-            setTimeout(function() { 
-                matriz[algarismos2[algarismos2.length - 1] - 1][algarismos1[index]].classList.add('destacar-algarismo-superior');
-                console.log(parseInt(matriz[algarismos2[algarismos2.length - 1] - 1][algarismos1[index]].getElementsByClassName('algarismo-superior')[0].textContent))
-            }, 3000*delay)
-        } else {
-            setTimeout(function() {    matriz[algarismos2[algarismos2.length - 1] - 1][algarismos1[index]].classList.add('destacar-algarismo-superior'); }, 3000 * delay)
-            setTimeout(function() { console.log(parseInt(matriz[algarismos2[algarismos2.length - 1] - 1][algarismos1[index]].getElementsByClassName('algarismo-superior')[0].textContent) + parseInt(matriz[algarismos2[algarismos2.length - 1] - 1][algarismos1[index-1]].getElementsByClassName('algarismo-inferior')[0].textContent));   matriz[algarismos2[algarismos2.length - 1] - 1][algarismos1[index-1]].classList.add('destacar-algarismo-inferior');}, 3000 * delay)        
+        //É o primeiro elemento da resposta de trás para frente
+        setTimeout(function() { 
+            matriz[algarismos2[algarismos2.length  - 1] - 1][algarismos1[algarismos1.length-1]].classList.add('destacar-algarismo-inferior');
+            //console.log(parseInt(matriz[algarismos2[algarismos2.length - 1] - 1][algarismos1[index-1]].getElementsByClassName('algarismo-inferior')[0].textContent))
+        }, 100)
+        //É o último elemento da resposta de trás para frente
+        setTimeout(function() { 
+            console.log(matriz[algarismos2[0] - 1][algarismos1[0]])
+            matriz[algarismos2[0] - 1][algarismos1[0]].classList.add('destacar-algarismo-superior');
+            //console.log(parseInt(matriz[algarismos2[algarismos2.length - 1] - 1][algarismos1[index]].getElementsByClassName('algarismo-superior')[0].textContent))
+        }, 1000*++delay)
+
+        let diagonaisASeremDestacadas = algarismos1.length + algarismos2.length;
+        let diagonaisDaDireita = algarismos1.length;
+        let diagonaisDaEsquerda = algarismos2.length - 1;
+        
+        let quantidadeDeCelularesMenores = 0;
+        
+        for (let index2 = diagonaisDaDireita - 1; index2 > 0; index2--) { //Destacando diagonais da direita
+            setTimeout(function() {   matriz[algarismos2[algarismos2.length - 1] - 1][algarismos1[index2-1]].classList.add('destacar-algarismo-inferior');}, 1000 * delay) 
+            setTimeout(function() {    matriz[algarismos2[algarismos2.length - 1] - 1][algarismos1[index2]].classList.add('destacar-algarismo-superior'); }, 1000 * delay)
+
+            let linhaIndex = 2;
+            let colunaIndex = 0;
+            for (let index3 = 0; index3 < (quantidadeDeCelularesMenores * 2 + 1); index3++) {//Destaca o restante da diagonal
+                if(index3 % 2 == 0 ) {
+                    setTimeout(function() {   matriz[algarismos2[algarismos2.length - linhaIndex++] - 1][algarismos1[index2+colunaIndex++]].classList.add('destacar-algarismo-inferior'); }, 1000 * delay)
+                } else {
+                    setTimeout(function() {   matriz[algarismos2[algarismos2.length - linhaIndex + 1] - 1][algarismos1[index2+colunaIndex]].classList.add('destacar-algarismo-superior'); }, 1000 * delay)
+                }
+                    
+            }
+
+            delay++;
+            ++quantidadeDeCelularesMenores;
         }
-        delay++;
+
+        quantidadeDeCelularesMenores = algarismos2.length - 1
+        setTimeout(function() {   matriz[algarismos2[algarismos2.length - 1] - 1][algarismos1[0]].classList.add('destacar-algarismo-superior');}, 1000 * delay) 
+
+        for (let index2 = diagonaisDaEsquerda; index2 > 0; index2--) { //Destacando diagonais da esquerda
+            //setTimeout(function() {   matriz[algarismos2[algarismos2.length - 1] - 2][algarismos1[0]].classList.add('destacar-algarismo-superior');}, 3000 * delay) 
+            let linhaIndex = 1;
+            let colunaIndex = 0;
+            for (let index3 = 0; index3 < ((quantidadeDeCelularesMenores * 2 + 1) - 1); index3++) {//Destaca o restante da diagonal
+                if(index3 % 2 == 0 ) {
+                    setTimeout(function() { console.log("Olha aqui", matriz[algarismos2[index2 - linhaIndex] - 1][algarismos1[colunaIndex] ]);   matriz[algarismos2[index2 - linhaIndex] - 1][algarismos1[colunaIndex] ].classList.add('destacar-algarismo-inferior'); }, 1000 * delay)
+                } else {
+                    setTimeout(function() {   matriz[algarismos2[index2 - linhaIndex++ + 1] - 1][algarismos1[colunaIndex++]].classList.add('destacar-algarismo-superior'); }, 1000 * delay)
+                    
+                }
+            }
+
+            delay++;
+            --quantidadeDeCelularesMenores;
+        }
+        
+       
+    
+}
+
+const verificarAlgarismosIguais = (algarismos) => {
+    let temItensDuplicados = false
+
+    for (let index = 0; index < algarismos.length; index++) {
+        for (let index2 = 0; index2 < algarismos.length; index2++) {
+            
+        } 
     }
+
 }
 
 

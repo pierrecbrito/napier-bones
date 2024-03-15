@@ -188,15 +188,17 @@ body {
     top: 100px;;
     display: flex;
     flex-direction: column;
+    justify-content: end;
 }
 
 
-.operando {
+.operando, .resultado {
     display: flex;
     margin-top: 10px;
     justify-content: end;
     flex-basis: auto;
 }
+
 
 #quadro-conta .quadrado {
     border-radius: 10px;
@@ -250,3 +252,11 @@ input {
     cursor: pointer;
 }
 
+#copyright {
+    text-align: center;
+    font-size: 0.8em;
+    position: absolute;
+    bottom: 5px;
+    left: 46%;
+    margin: 0 auto;
+}
