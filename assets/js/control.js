@@ -33,6 +33,27 @@ const porAsColunasEmSequencia = (algarismos) => {
         
     }
    
+}
 
-    console.log(colunasDeInteresse)
+/*
+A ideia é pôr inicialemnte as colunas em ordem para depois pôr as linhas.
+*/
+
+const porAsLinhasEmSequencia = (algarismos) => {
+    let linhasDeInteresse = []//Colunas na sequencia digitada do operando
+
+    let linhasQueFicaram = document.querySelectorAll(`#corpo-ferramenta .linha`)
+
+    for (let index = 0; index < linhasQueFicaram.length; index++) {//Remove linhas para depois aparecerem ordenadas
+         linhasQueFicaram[index].remove()
+    }
+
+    for (let index = 0; index < algarismos.length; index++) {//Linhas
+        linhasQueFicaram.forEach(linha => {
+            if(linha.querySelector(`.celula:nth-child(1)`).textContent == algarismos[index]) {
+                document.querySelector(`#corpo-ferramenta`).append(linha)
+            }
+        })
+    }
+   
 }
