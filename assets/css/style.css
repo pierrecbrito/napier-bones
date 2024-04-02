@@ -9,6 +9,7 @@ body {
 #container-principal {
     width: 100%;
     min-height: 100vh;
+    padding: 20px;
 }
 
 #ossos-de-napier {
@@ -65,7 +66,7 @@ body {
     transform: rotate(52deg);
     top: 14px;
     border-left: 2px solid gray;
-    background-color: azure;
+    background-color: #87CEFA;
 } 
 
 .cruzada::before { 
