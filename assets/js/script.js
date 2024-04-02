@@ -20,6 +20,11 @@ const esconderColuna = (coluna, quantidaDeColunas) => {
 
     while(linha <= 8) {
         matriz[linha][coluna].classList.add('subido')
+
+        setTimeout(function() {
+            matriz[linha][coluna].remove()
+        }, 1500)
+
         linha++
     }
 
@@ -37,6 +42,9 @@ const esconderLinha = (linha) => {
     let coluna = 0
     while(coluna <= 9) {
         matriz[linha][coluna].classList.add('arrastado')
+        setTimeout(function() {
+            matriz[linha][coluna].remove()
+        }, 1500)
         coluna++
     }
    

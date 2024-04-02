@@ -8,8 +8,6 @@ document.querySelector('#btn-calcular').addEventListener('click', function(e) {
 const porAsColunasEmSequencia = (algarismos) => {
     let colunasDeInteresse = []//Colunas na sequencia digitada do operando
 
-    
-
     for (let index = 0; index < 9; index++) {//Linhas
         if(index == 0) {
             let linha = document.getElementById("cabecalho-ferramenta").getElementsByClassName('linha')
